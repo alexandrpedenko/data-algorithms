@@ -1,0 +1,20 @@
+{
+  "name": "clean-node",
+  "version": "1.0.0",
+  "description": "Clean Nodejs API",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:dev": "nodemon esm src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "oleksandr",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "esm": "^3.2.25"
+  }
+}
