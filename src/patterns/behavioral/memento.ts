@@ -1,9 +1,3 @@
-const mementoDescr = `
-  Знімок — це поведінковий патерн проектування, що дає змогу зберігати та відновлювати минулий стан об’єктів, не розкриваючи подробиць їхньої реалізації.
-
-  Коли вам потрібно зберігати миттєві знімки стану об’єкта (або його частини) для того, щоб об’єкт можна було відновити в тому самому стані.
-`;
-
 /**
  * The Originator holds some important state that may change over time. It also
  * defines a method for saving the state inside a memento and another method for

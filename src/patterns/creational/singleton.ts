@@ -1,7 +1,3 @@
-`
- *  Одинак — це породжувальний патерн проектування, який гарантує, що клас має лише один екземпляр, та надає глобальну точку доступу до нього.
-`;
-
 /**
  * The Singleton class defines the `getInstance` method that lets clients access
  * the unique singleton instance.

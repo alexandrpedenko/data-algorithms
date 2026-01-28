@@ -1,7 +1,3 @@
-const facedeDescr = `
-  Фасад — це структурний патерн проектування, який надає простий інтерфейс до складної системи класів, бібліотеки abo фреймворку.
-`;
-
 /**
  * The Facade class provides a simple interface to the complex logic of one or
  * several subsystems. The Facade delegates the client requests to the

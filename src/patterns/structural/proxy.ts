@@ -1,9 +1,3 @@
-const proxyDescr = `
-  Замісник — це об’єкт, який виступає прошарком між клієнтом та реальним сервісним об’єктом. 
-  Замісник отримує виклики від клієнта, виконує свою функцію (контроль доступу, кешування, зміна запиту та інше), 
-  a потім передає виклик сервісному об’єктові.
-`;
-
 /**
  * The Subject interface declares common operations for both RealSubject and the
  * Proxy. As long as the client works with RealSubject using this interface,

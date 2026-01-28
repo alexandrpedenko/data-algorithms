@@ -1,8 +1,3 @@
-`
- *  Фабричний метод — це породжувальний патерн проектування, який визначає загальний інтерфейс для створення об’єктів у суперкласі,
- *  дозволяючи підкласам змінювати тип створюваних об’єктів.
-`;
-
 /**
  * The Creator class declares the factory method that is supposed to return an
  * object of a Product class. The Creator's subclasses usually provide the

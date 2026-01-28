@@ -1,7 +1,3 @@
-`
- * Прототип — це породжувальний патерн проектування, що дає змогу копіювати об’єкти, не вдаючись у подробиці їхньої реалізації.
-`;
-
 /**
  * The example class that has cloning ability. We'll see how the values of field
  * with different types will be cloned.

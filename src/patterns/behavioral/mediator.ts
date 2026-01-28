@@ -1,10 +1,3 @@
-const mediatorDescr = `
-  Посередник — це поведінковий патерн проектування, що дає змогу зменшити зв’язаність великої кількості класів між собою,
-  завдяки переміщенню цих зв’язків до одного класу-посередника.
-
-  Найпопулярнішим застосуванням Посередника в TypeScript-коді є зв’язок кількох компонентів GUI однієї програми.
-`;
-
 /**
  * The Mediator interface declares a method used by components to notify the
  * mediator about various events. The Mediator may react to these events and

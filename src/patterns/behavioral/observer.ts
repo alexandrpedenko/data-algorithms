@@ -1,8 +1,3 @@
-const observerDesc = `
-  Спостерігач — це поведінковий патерн проектування, який створює механізм підписки,
-  що дає змогу одним об’єктам стежити й реагувати на події, які відбуваються в інших об’єктах.
-`;
-
 /**
  * The Subject interface declares a set of methods for managing subscribers.
  */

@@ -1,9 +1,3 @@
-const decoratorDescr = `
-  Декоратор — це структурний патерн проектування, 
-  що дає змогу динамічно додавати об’єктам нову функціональність, 
-  загортаючи їх y корисні «обгортки».
-`;
-
 /**
  * The base Component interface defines operations that can be altered by
  * decorators.

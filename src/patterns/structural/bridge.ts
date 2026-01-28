@@ -1,8 +1,3 @@
-const bridge = `
-  Міст — це структурний патерн проектування, який розділяє один або кілька класів на дві окремі ієрархії — абстракцію та реалізацію,
-  дозволяючи змінювати код в одній гілці класів, незалежно від іншої.
-`;
-
 /**
  * The Abstraction defines the interface for the "control" part of the two class
  * hierarchies. It maintains a reference to an object of the Implementation
