@@ -25,9 +25,9 @@ abstract class Component {
    * object tree assembly. The downside is that these methods will be empty
    * for the leaf-level components.
    */
-  public add(component: Component): void {}
+  public add(component: Component): void { }
 
-  public remove(component: Component): void {}
+  public remove(component: Component): void { }
 
   /**
    * You can provide a method that lets the client code figure out whether a
@@ -105,7 +105,7 @@ class Composite extends Component {
 /**
  * The client code works with all of the components via the base interface.
  */
-function clientCode(component: Component) {
+function compositeClientCode(component: Component) {
   // ...
 
   console.log(`RESULT: ${component.operation()}`);
@@ -116,9 +116,9 @@ function clientCode(component: Component) {
 /**
  * This way the client code can support the simple leaf components...
  */
-const simple = new Leaf();
+const simpleLeaf = new Leaf();
 console.log("Client: I've got a simple component:");
-clientCode(simple);
+compositeClientCode(simpleLeaf);
 console.log('');
 
 /**
@@ -133,7 +133,7 @@ branch2.add(new Leaf());
 tree.add(branch1);
 tree.add(branch2);
 console.log("Client: Now I've got a composite tree:");
-clientCode(tree);
+compositeClientCode(tree);
 console.log('');
 
 /**
@@ -141,7 +141,7 @@ console.log('');
  * base Component class, the client code can work with any component, simple or
  * complex, without depending on their concrete classes.
  */
-function clientCode2(component1: Component, component2: Component) {
+function compositeClientCode2(component1: Component, component2: Component) {
   // ...
 
   if (component1.isComposite()) {
@@ -155,4 +155,4 @@ function clientCode2(component1: Component, component2: Component) {
 console.log(
   "Client: I don't need to check the components classes even when managing the tree:"
 );
-clientCode2(tree, simple);
+compositeClientCode2(tree, simpleLeaf);

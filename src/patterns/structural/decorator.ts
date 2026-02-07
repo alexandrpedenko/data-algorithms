@@ -1,8 +1,8 @@
 /**
- * The base Component interface defines operations that can be altered by
+ * The base DecoratorComponent interface defines operations that can be altered by
  * decorators.
  */
-interface Component {
+interface DecoratorComponent {
   operation(): string;
 }
 
@@ -10,7 +10,7 @@ interface Component {
  * Concrete Components provide default implementations of the operations. There
  * might be several variations of these classes.
  */
-class ConcreteComponent implements Component {
+class ConcreteComponent implements DecoratorComponent {
   public operation(): string {
     return 'ConcreteComponent';
   }
@@ -23,10 +23,10 @@ class ConcreteComponent implements Component {
  * include a field for storing a wrapped component and the means to initialize
  * it.
  */
-class Decorator implements Component {
-  protected component: Component;
+class Decorator implements DecoratorComponent {
+  protected component: DecoratorComponent;
 
-  constructor(component: Component) {
+  constructor(component: DecoratorComponent) {
     this.component = component;
   }
 
@@ -63,11 +63,11 @@ class ConcreteDecoratorB extends Decorator {
 }
 
 /**
- * The client code works with all objects using the Component interface. This
+ * The client code works with all objects using the DecoratorComponent interface. This
  * way it can stay independent of the concrete classes of components it works
  * with.
  */
-function clientCode(component: Component) {
+function decoratorClientCode(component: DecoratorComponent) {
   // ...
 
   console.log(`RESULT: ${component.operation()}`);
@@ -78,9 +78,9 @@ function clientCode(component: Component) {
 /**
  * This way the client code can support both simple components...
  */
-const simple = new ConcreteComponent();
+const simpleComponent = new ConcreteComponent();
 console.log("Client: I've got a simple component:");
-clientCode(simple);
+decoratorClientCode(simpleComponent);
 console.log('');
 
 /**
@@ -89,7 +89,7 @@ console.log('');
  * Note how decorators can wrap not only simple components but the other
  * decorators as well.
  */
-const decorator1 = new ConcreteDecoratorA(simple);
+const decorator1 = new ConcreteDecoratorA(simpleComponent);
 const decorator2 = new ConcreteDecoratorB(decorator1);
 console.log("Client: Now I've got a decorated component:");
-clientCode(decorator2);
+decoratorClientCode(decorator2);

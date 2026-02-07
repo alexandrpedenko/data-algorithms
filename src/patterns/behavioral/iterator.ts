@@ -5,7 +5,7 @@
  * underlying representation (list, stack, tree, etc.).
  */
 
-interface Iterator<T> {
+interface IIterator<T> {
   // Return the current element.
   current(): T;
 
@@ -24,7 +24,7 @@ interface Iterator<T> {
 
 interface Aggregator {
   // Retrieve an external iterator.
-  getIterator(): Iterator<string>;
+  getIterator(): IIterator<string>;
 }
 
 /**
@@ -32,7 +32,7 @@ interface Aggregator {
  * store the current traversal position at all times.
  */
 
-class AlphabeticalOrderIterator implements Iterator<string> {
+class AlphabeticalOrderIterator implements IIterator<string> {
   private collection: WordsCollection;
 
   /**
@@ -102,11 +102,11 @@ class WordsCollection implements Aggregator {
     this.items.push(item);
   }
 
-  public getIterator(): Iterator<string> {
+  public getIterator(): IIterator<string> {
     return new AlphabeticalOrderIterator(this);
   }
 
-  public getReverseIterator(): Iterator<string> {
+  public getReverseIterator(): IIterator<string> {
     return new AlphabeticalOrderIterator(this, true);
   }
 }

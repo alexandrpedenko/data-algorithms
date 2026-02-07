@@ -11,7 +11,7 @@ class Flyweight {
     this.sharedState = sharedState;
   }
 
-  public operation(uniqueState): void {
+  public operation(uniqueState: any): void {
     const s = JSON.stringify(this.sharedState);
     const u = JSON.stringify(uniqueState);
     console.log(`Flyweight: Displaying shared (${s}) and unique (${u}) state.`);
@@ -27,7 +27,7 @@ class Flyweight {
 class FlyweightFactory {
   private flyweights: { [key: string]: Flyweight } = <
     Record<string, Flyweight>
-  >{};
+    >{};
 
   constructor(initialFlyweights: string[][]) {
     for (const state of initialFlyweights) {

@@ -1,8 +1,8 @@
 /**
- * The Component interface declares an `accept` method that should take the base
+ * The VisitorComponent interface declares an `accept` method that should take the base
  * visitor interface as an argument.
  */
-interface Component {
+interface VisitorComponent {
   accept(visitor: Visitor): void;
 }
 
@@ -10,7 +10,7 @@ interface Component {
  * Each Concrete Component must implement the `accept` method in such a way that
  * it calls the visitor's method corresponding to the component's class.
  */
-class ConcreteComponentA implements Component {
+class ConcreteComponentA implements VisitorComponent {
   /**
    * Note that we're calling `visitConcreteComponentA`, which matches the
    * current class name. This way we let the visitor know the class of the
@@ -30,7 +30,7 @@ class ConcreteComponentA implements Component {
   }
 }
 
-class ConcreteComponentB implements Component {
+class ConcreteComponentB implements VisitorComponent {
   /**
    * Same here: visitConcreteComponentB => ConcreteComponentB
    */
@@ -96,7 +96,7 @@ class ConcreteVisitor2 implements Visitor {
  * figuring out their concrete classes. The accept operation directs a call to
  * the appropriate operation in the visitor object.
  */
-function clientCode(components: Component[], visitor: Visitor) {
+function visitorClientCode(components: VisitorComponent[], visitor: Visitor) {
   // ...
   for (const component of components) {
     component.accept(visitor);
@@ -110,11 +110,11 @@ console.log(
   'The client code works with all visitors via the base Visitor interface:'
 );
 const visitor1 = new ConcreteVisitor1();
-clientCode(components, visitor1);
+visitorClientCode(components, visitor1);
 console.log('');
 
 console.log(
   'It allows the same client code to work with different types of visitors:'
 );
 const visitor2 = new ConcreteVisitor2();
-clientCode(components, visitor2);
+visitorClientCode(components, visitor2);

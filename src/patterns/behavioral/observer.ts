@@ -1,7 +1,7 @@
 /**
  * The Subject interface declares a set of methods for managing subscribers.
  */
-interface Subject {
+interface ISubject {
   // Attach an observer to the subject.
   attach(observer: Observer): void;
 
@@ -16,12 +16,12 @@ interface Subject {
  * The Subject owns some important state and notifies observers when the state
  * changes.
  */
-class ConcreteSubject implements Subject {
+class ConcreteSubject implements ISubject {
   /**
    * @type {number} For the sake of simplicity, the Subject's state, essential
    * to all subscribers, is stored in this variable.
    */
-  public state: number;
+  public state!: number;
 
   /**
    * @type {Observer[]} List of subscribers. In real life, the list of
@@ -83,7 +83,7 @@ class ConcreteSubject implements Subject {
  */
 interface Observer {
   // Receive update from subject.
-  update(subject: Subject): void;
+  update(subject: ISubject): void;
 }
 
 /**
@@ -91,7 +91,7 @@ interface Observer {
  * attached to.
  */
 class ConcreteObserverA implements Observer {
-  public update(subject: Subject): void {
+  public update(subject: ISubject): void {
     if (subject instanceof ConcreteSubject && subject.state < 3) {
       console.log('ConcreteObserverA: Reacted to the event.');
     }
@@ -99,7 +99,7 @@ class ConcreteObserverA implements Observer {
 }
 
 class ConcreteObserverB implements Observer {
-  public update(subject: Subject): void {
+  public update(subject: ISubject): void {
     if (
       subject instanceof ConcreteSubject &&
       (subject.state === 0 || subject.state >= 2)

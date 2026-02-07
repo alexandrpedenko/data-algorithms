@@ -1,6 +1,10 @@
 // Abstract Factory Concept Sample Code
 
-interface IProduct extends IProductA, IProductB {}
+export interface IProductB {
+  name: string;
+}
+
+interface IProduct extends IProductA, IProductB { }
 
 class AbstractFactory {
   // The Abstract Factory Concrete Class
@@ -66,6 +70,47 @@ export class FactoryA {
         return new ConcreteProductB();
       } else if (some_property === 'c') {
         return new ConcreteProductC();
+      } else {
+        throw new Error('Class Not Found');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+    return new ConcreteProduct();
+  }
+}
+
+// FactoryB Sample Code - similar to FactoryA
+class ConcreteProductBB extends ConcreteProduct {
+  constructor() {
+    super();
+    this.name = 'FactoryB:ConcreteProductA';
+  }
+}
+
+class ConcreteProductBC extends ConcreteProduct {
+  constructor() {
+    super();
+    this.name = 'FactoryB:ConcreteProductB';
+  }
+}
+
+class ConcreteProductBD extends ConcreteProduct {
+  constructor() {
+    super();
+    this.name = 'FactoryB:ConcreteProductC';
+  }
+}
+
+export class FactoryB {
+  static getObject(some_property: string): IProductB {
+    try {
+      if (some_property === 'a') {
+        return new ConcreteProductBB();
+      } else if (some_property === 'b') {
+        return new ConcreteProductBC();
+      } else if (some_property === 'c') {
+        return new ConcreteProductBD();
       } else {
         throw new Error('Class Not Found');
       }

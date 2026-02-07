@@ -4,8 +4,8 @@
  */
 class Prototype {
   public primitive: any;
-  public component: object;
-  public circularReference: ComponentWithBackReference;
+  public component!: object;
+  public circularReference!: ComponentWithBackReference;
 
   public clone(): this {
     const clone = Object.create(this);
@@ -26,7 +26,7 @@ class Prototype {
 }
 
 class ComponentWithBackReference {
-  public prototype;
+  public prototype: Prototype;
 
   constructor(prototype: Prototype) {
     this.prototype = prototype;
@@ -36,7 +36,7 @@ class ComponentWithBackReference {
 /**
  * The client code.
  */
-function clientCode() {
+function prototypeClientCode() {
   const p1 = new Prototype();
   p1.primitive = 245;
   p1.component = new Date();
@@ -71,4 +71,4 @@ function clientCode() {
   }
 }
 
-clientCode();
+prototypeClientCode();

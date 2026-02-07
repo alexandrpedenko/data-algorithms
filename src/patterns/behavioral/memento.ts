@@ -29,9 +29,9 @@ class Originator {
   private generateRandomString(length: number = 10): string {
     const charSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    return Array.apply(null, { length })
-      .map(() => charSet.charAt(Math.floor(Math.random() * charSet.length)))
-      .join('');
+    return Array.from({ length }, () =>
+      charSet.charAt(Math.floor(Math.random() * charSet.length))
+    ).join('');
   }
 
   /**
@@ -87,7 +87,7 @@ class ConcreteMemento implements Memento {
    * The rest of the methods are used by the Caretaker to display metadata.
    */
   public getName(): string {
-    return `${this.date} / (${this.state.substr(0, 9)}...)`;
+    return `${this.date} / (${this.state.substring(0, 9)}...)`;
   }
 
   public getDate(): string {
@@ -119,6 +119,9 @@ class Caretaker {
       return;
     }
     const memento = this.mementos.pop();
+    if (!memento) {
+      return;
+    }
 
     console.log(`Caretaker: Restoring state to: ${memento.getName()}`);
     this.originator.restore(memento);

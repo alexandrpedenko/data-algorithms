@@ -78,9 +78,9 @@ class Receiver {
  * the command.
  */
 class Invoker {
-  private onStart: Command;
+  private onStart!: Command;
 
-  private onFinish: Command;
+  private onFinish!: Command;
 
   /**
    * Initialize commands.
@@ -112,7 +112,7 @@ class Invoker {
     }
   }
 
-  private isCommand(object): object is Command {
+  private isCommand(object: any): object is Command {
     return object.execute !== undefined;
   }
 }

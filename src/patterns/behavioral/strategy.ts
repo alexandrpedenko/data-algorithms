@@ -1,16 +1,16 @@
 /**
- * The Context defines the interface of interest to clients.
+ * The StrategyContext defines the interface of interest to clients.
  */
-class Context {
+class StrategyContext {
   /**
-   * @type {Strategy} The Context maintains a reference to one of the Strategy
-   * objects. The Context does not know the concrete class of a strategy. It
+   * @type {Strategy} The StrategyContext maintains a reference to one of the Strategy
+   * objects. The StrategyContext does not know the concrete class of a strategy. It
    * should work with all strategies via the Strategy interface.
    */
   private strategy: Strategy;
 
   /**
-   * Usually, the Context accepts a strategy through the constructor, but also
+   * Usually, the StrategyContext accepts a strategy through the constructor, but also
    * provides a setter to change it at runtime.
    */
   constructor(strategy: Strategy) {
@@ -18,21 +18,21 @@ class Context {
   }
 
   /**
-   * Usually, the Context allows replacing a Strategy object at runtime.
+   * Usually, the StrategyContext allows replacing a Strategy object at runtime.
    */
   public setStrategy(strategy: Strategy) {
     this.strategy = strategy;
   }
 
   /**
-   * The Context delegates some work to the Strategy object instead of
+   * The StrategyContext delegates some work to the Strategy object instead of
    * implementing multiple versions of the algorithm on its own.
    */
   public doSomeBusinessLogic(): void {
     // ...
 
     console.log(
-      "Context: Sorting data using the strategy (not sure how it'll do it)"
+      "StrategyContext: Sorting data using the strategy (not sure how it'll do it)"
     );
     const result = this.strategy.doAlgorithm(['a', 'b', 'c', 'd', 'e']);
     console.log(result.join(','));
@@ -45,7 +45,7 @@ class Context {
  * The Strategy interface declares operations common to all supported versions
  * of some algorithm.
  *
- * The Context uses this interface to call the algorithm defined by Concrete
+ * The StrategyContext uses this interface to call the algorithm defined by Concrete
  * Strategies.
  */
 interface Strategy {
@@ -54,7 +54,7 @@ interface Strategy {
 
 /**
  * Concrete Strategies implement the algorithm while following the base Strategy
- * interface. The interface makes them interchangeable in the Context.
+ * interface. The interface makes them interchangeable in the StrategyContext.
  */
 class ConcreteStrategyA implements Strategy {
   public doAlgorithm(data: string[]): string[] {
@@ -73,12 +73,12 @@ class ConcreteStrategyB implements Strategy {
  * client should be aware of the differences between strategies in order to make
  * the right choice.
  */
-let context = new Context(new ConcreteStrategyA());
+const strategyContext = new StrategyContext(new ConcreteStrategyA());
 console.log('Client: Strategy is set to normal sorting.');
-context.doSomeBusinessLogic();
+strategyContext.doSomeBusinessLogic();
 
 console.log('');
 
 console.log('Client: Strategy is set to reverse sorting.');
-context.setStrategy(new ConcreteStrategyB());
-context.doSomeBusinessLogic();
+strategyContext.setStrategy(new ConcreteStrategyB());
+strategyContext.doSomeBusinessLogic();
