@@ -11,6 +11,7 @@
   "author": "oleksandr",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.12.0",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
